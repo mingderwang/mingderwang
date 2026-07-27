@@ -2,27 +2,6 @@
 
 分析全基因組定序（WGS）資料中，癌症易感基因的致病性突變。
 
-## 專案結構
-
-```
-.
-├── your_file.vcf.gz          # 原始 WGS VCF（DeepVariant v1.5.0，GRCh37）
-├── src/
-│   └── analyze.py            # VEP 注解流程腳本
-├── BRCA2/
-├── TP53/
-├── RB1/
-├── APC/
-├── PTEN/
-├── KRAS/
-├── EGFR/
-├── ATM/
-├── CHEK2/
-└── PALB2/
-```
-
-每個基因資料夾包含 `README.md`（英文）與 `README_zh-TW.md`（繁體中文）。
-
 ## 基因分析結果
 
 | 基因   | 染色體 | 區域（GRCh37）          | PASS 變異數 | 編碼變異          | 致病性 |
@@ -70,41 +49,5 @@
 1. 使用 `awk` 從 VCF 中擷取通過品質篩選（PASS）的變異
 2. 透過 **Ensembl VEP REST API**（GRCh37 HGVS 端點）進行功能註解
 3. 交叉比對 **ClinVar** 與 **gnomAD**，確認臨床意義
-
-### 快速執行
-
-```bash
-python src/analyze.py <GENE> <CHROM> <START> <END> your_file.vcf.gz
-```
-
-使用工具：`bcftools`、Python 3、Ensembl VEP REST API、NCBI E-utilities
-
-## 輸入資料
-
-- **檔案**：`your_file.vcf.gz`（173 MB）
-- **變異偵測工具**：DeepVariant v1.5.0
-- **參考基因組**：GRCh37（hg19）
-- **樣本編號**：ULMEDCBB3A73_ULMEDCBB3A73
-
-## 標籤（Tags）
-
-| 標籤  | 說明                               |
-|-------|-----------------------------------|
-| v1.0  | BRCA2 初始分析                      |
-| v1.1  | 新增繁體中文 README                  |
-| v1.2  | 新增會話匯出紀錄                     |
-| v1.3  | 文件重新整理至基因資料夾              |
-| TP53  | TP53 分析完成                       |
-| RB1   | RB1 分析完成                        |
-| APC   | APC 分析完成                        |
-| PTEN  | PTEN 分析完成                       |
-| KRAS  | KRAS 分析完成                       |
-| EGFR  | EGFR 分析完成                       |
-| ATM   | ATM 分析完成                        |
-| CHEK2 | CHEK2 分析完成                      |
-| PALB2 | PALB2 分析完成                      |
-| v2.0  | 10 個基因完整摘要表格               |
-
-## 免責聲明
 
 本分析為電腦運算結果，非臨床等級之變異解讀。如需做出醫療決策，請諮詢認證遺傳諮詢師或臨床基因檢驗實驗室。
